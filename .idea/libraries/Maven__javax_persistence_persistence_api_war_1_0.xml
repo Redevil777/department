@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: javax.persistence:persistence-api:war:1.0">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/persistence/persistence-api/1.0/persistence-api-1.0.war!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/persistence/persistence-api/1.0/persistence-api-1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/persistence/persistence-api/1.0/persistence-api-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
