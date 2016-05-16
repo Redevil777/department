@@ -16,6 +16,7 @@
 
 <c:url var="addUrl" value="/and/department/all" />
 
+
 <c:choose>
     <c:when test="${empty departments}">
         There are currently no departments in the list.
@@ -43,12 +44,14 @@
                 <c:url var="deleteUrl" value="/and/department/delete?id=${department.id}" />
                 <c:url var="editUrl" value="/and/department/edit?id=${department.id}" />
                 <c:url var="averageSalary" value="/and/department/avg?id=${department.id}" />
+                <c:url var="empDep" value="/and/department/employee?id=${department.id}"/>
                 <tr>
                     <td><c:out value="${department.id}" /></td>
                     <td><c:out value="${department.name}" /></td>
                     <td><a href="${editUrl}">Edit</a> </td>
                     <td><a href="${deleteUrl}">Delete</a></td>
                     <td><a href="${averageSalary}">Average salary</a> </td>
+                    <td><a href="${empDep}">Show employees</a> </td>
                 </tr>
             </c:forEach>
         </table>

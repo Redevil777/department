@@ -25,9 +25,8 @@
            title="employee-add">Add employee</a>
     </c:when>
     <c:otherwise>
-        All departments.
+        <h3>All employees</h3>
 
-        <br><br>
         <table style="border: 1px solid; width: 500px; text-align:center" border="1">
 
             <tr>
@@ -69,13 +68,19 @@
             </c:forEach>
         </table>
         <br><br>
-        Search employees by date of birthday
-        <br>
-        <br>
-        <c:url var="search" value="/and/employee/date" />
+        <h4>Search employees between date of birthday</h4>
+        <c:url var="search" value="/and/employee/betweenDate" />
         <form:form method="get" action="${search}">
             From <input type="date" name="from">
             To <input type="date" name="to">
+            <input type="submit" value="search">
+        </form:form> <br>
+
+        <br>
+        <h4>Search employees by date of birthday</h4>
+        <c:url var="search2" value="/and/employee/byDate" />
+        <form:form method="get" action="${search2}">
+            Date <input type="date" name="date">
             <input type="submit" value="search">
         </form:form> <br>
     </c:otherwise>

@@ -105,7 +105,7 @@ public class EmployeeController {
         return "employeeedited";
     }
 
-    @RequestMapping(value = "/date", method = RequestMethod.GET)
+    @RequestMapping(value = "/betweenDate", method = RequestMethod.GET)
     public String getEmployeesBetweenDates(@RequestParam(value = "from") Date from,
                                            @RequestParam(value = "to") Date to,
                                            Model model){
@@ -116,5 +116,22 @@ public class EmployeeController {
         model.addAttribute("to", to);
         model.addAttribute("department", departmentService.getAll());
         return "employeesearch";
+    }
+
+    @RequestMapping(value = "/byDate", method = RequestMethod.GET)
+    public String getEmployeeByDate(@RequestParam(value = "date") Date date,
+                                    Model model){
+        List<Employee> employees = employeeService.getEmployeeByDate(date);
+
+        for(Employee qwe:employees){
+            System.out.println(qwe.getFname());
+        }
+
+        List<Department> departments =  departmentService.getAll();
+
+        model.addAttribute("employee", employees);
+        model.addAttribute("department", departments);
+
+        return "employeedate";
     }
 }

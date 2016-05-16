@@ -1,8 +1,6 @@
 package com.andrey.service;
 
 import com.andrey.model.Employee;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,11 +23,9 @@ public class EmployeeService {
     @Resource(name = "sessionFactory")
     private SessionFactory sessionFactory;
 
-   // private Logger LOGGER = LogManager.getLogger(EmployeeService.class);
 
     public List<Employee> getAll(){
 
-      //  LOGGER.debug("get all employee");
         Session session = sessionFactory.getCurrentSession();
 
         Query query = session.createQuery("from Employee");
@@ -40,7 +36,6 @@ public class EmployeeService {
     }
 
     public void add(Employee employee){
-      //  LOGGER.debug("add employee");
 
         Session session = sessionFactory.getCurrentSession();
 
@@ -48,8 +43,6 @@ public class EmployeeService {
     }
 
     public void delete(int id){
-      //  LOGGER.debug("delete employee by id");
-
         Session session = sessionFactory.getCurrentSession();
 
         Employee employee = (Employee) session.get(Employee.class, id);
@@ -58,7 +51,6 @@ public class EmployeeService {
     }
 
     public void edit(Employee employee){
-     //   LOGGER.debug("edit employee");
         Session session = sessionFactory.getCurrentSession();
 
         Employee newEmployee = (Employee) session.get(Employee.class, employee.getId());
@@ -74,7 +66,7 @@ public class EmployeeService {
     }
 
     public Employee get(int id){
-       // LOGGER.debug("get employee by id");
+
         Session session = sessionFactory.getCurrentSession();
 
         Employee employee = (Employee) session.get(Employee.class, id);
@@ -83,11 +75,18 @@ public class EmployeeService {
     }
 
     public List<Employee> getEmployeesBetweenDates(Date from, Date to){
-       // LOGGER.debug("get employees between dates of birthday");
 
         Session session = sessionFactory.getCurrentSession();
 
-        Query query = session.createQuery("from Employee where birthday between '1993-01-01' and '1995-08-24'");
+        Query query = session.createQuery("from Employee where birthday between '" + from +  "' and '" + to + "'");
+
+        return query.list();
+    }
+
+    public List<Employee> getEmployeeByDate(Date date){
+        Session session = sessionFactory.getCurrentSession();
+
+        Query query = session.createQuery("from Employee where birthday = '" + date + "'");
 
         return query.list();
     }

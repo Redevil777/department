@@ -121,4 +121,18 @@ public class DepartmentController {
 
         return "avgsalary";
     }
+
+    @RequestMapping(value = "/employee", method = RequestMethod.GET)
+    public String emp(@RequestParam(value = "id", required = true) int id,
+                              Model model){
+        List<Employee> employees = departmentService.emp(id);
+
+        model.addAttribute("employee", employees);
+
+        for(Employee qwe: employees){
+            System.out.println(qwe.getFname());
+        }
+
+        return "departmentemployee";
+    }
 }

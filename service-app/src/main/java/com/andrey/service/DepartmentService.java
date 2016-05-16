@@ -25,11 +25,8 @@ public class DepartmentService {
     @Resource(name = "sessionFactory")
     private SessionFactory sessionFactory;
 
-    //private Logger LOGGER = LogManager.getLogger(DepartmentService.class);
-
     public List<Department> getAll(){
 
-        //LOGGER.debug("Department getAll");
         Session session = sessionFactory.getCurrentSession();
 
         Query query = session.createQuery("FROM  Department");
@@ -39,7 +36,6 @@ public class DepartmentService {
 
     public void add(Department department) {
 
-        //LOGGER.debug("add department");
 
         Session session = sessionFactory.getCurrentSession();
 
@@ -48,7 +44,6 @@ public class DepartmentService {
 
     public void deleteById(int id){
 
-       // LOGGER.debug("delete department by id");
         Session session = sessionFactory.getCurrentSession();
 
         Department department = (Department) session.get(Department.class, id);
@@ -57,7 +52,6 @@ public class DepartmentService {
     }
 
     public Department get(int id){
-       // LOGGER.debug("get department by id");
 
         Session session = sessionFactory.getCurrentSession();
 
@@ -68,7 +62,6 @@ public class DepartmentService {
 
     public void edit(Department department) {
 
-       // LOGGER.debug("Edit department");
         Session session = sessionFactory.getCurrentSession();
 
         Department newDepartment = (Department) session.get(Department.class, department.getId());
@@ -79,11 +72,18 @@ public class DepartmentService {
     }
 
     public List<Employee> avg(int id){
-       // LOGGER.debug("average salary");
 
         Session session = sessionFactory.getCurrentSession();
 
         Query query = session.createQuery("from Employee where dep_id =" + id);
+
+        return query.list();
+    }
+
+    public List<Employee> emp(int id){
+        Session session = sessionFactory.getCurrentSession();
+
+        Query query = session.createQuery("from Employee where dep_id=" + id);
 
         return query.list();
     }

@@ -12,6 +12,8 @@
     <title>Home page</title>
 </head>
 <body>
+<h2>Home page</h2>
+
 <br>
 <li><a href="<spring:url value='/and/department/add' ></spring:url>"
        title="department-add">add department</a></li><br>
